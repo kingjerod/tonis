@@ -27,7 +27,7 @@ $app->add(function ($request, $response, $next) {
 });
 
 $app->get('/articles/{id}', function ($request, $response) {
-    $response->end('Articles');
+    return $response->write('Articles');
 });
 ``` 
 
@@ -47,7 +47,7 @@ $router->add(function ($request, $response, $next) {
 });
 
 $router->get('/{id}', function ($request, $response) {
-    $response->end('Articles');
+    return $response->write('Articles');
 });
 
 // this mounts the $router middleware
