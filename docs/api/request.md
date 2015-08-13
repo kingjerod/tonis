@@ -46,3 +46,29 @@ $app->get('/hello/{name}', function ($request, $response) {
     return $response->write(var_export($request->getParams(), true));
 });
 ```
+
+getQueryParams()
+-----------
+`public function getQueryParams(): array`
+
+Get all query params ($_GET) from the matched route.
+
+```php
+$app->get('/hello', function ($request, $response) {
+    // If URL was /hello?name=Tonis&id=123 then output would be ['name' => 'Tonis', 'id' => '123']
+    return $response->write(var_export($request->getQueryParams(), true));
+});
+```
+
+getParsedBody()
+-----------
+`public function getParsedBody(): array`
+
+Get the body sent with the request for the matched route. This is useful for handling form submissions.
+
+```php
+$app->post('/register', function ($request, $response) {
+    // For a form submission, this would include any inputs
+    return $response->write(var_export($request->getParsedBody(), true));
+});
+```
